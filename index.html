@@ -1,0 +1,528 @@
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>WebValet - Custom Web Development</title>
+    <meta name="description" content="WebValet builds high-performance, custom websites for small businesses that want to grow. We specialize in design, development, and SEO to build your digital presence.">
+    
+    <!-- Updated favicon to primary brand color: #3A98FF -->
+    <link rel="icon" href="https://placehold.co/32x32/3A98FF/ffffff?text=WV" type="image/png">
+
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Load Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Base styles for the entire document (Light Mode Enforced) */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff; /* Pure white background */
+            color: #1e293b; /* Slate-900 equivalent for primary text */
+            transition: background-color 0.3s ease;
+        }
+
+        /* *** DEFINITIVE FIX: Massive Navigation Bar Spacing Adjustment (12rem / 192px) *** */
+        section {
+            /* Ensures content isn't immediately covered by the sticky header */
+            padding-top: 12rem; 
+        }
+
+        /* Utility variables */
+        :root {
+            --primary-blue: #3A98FF; 
+            --darker-blue: #1E84FF;
+            --accent-glow: rgba(58, 152, 255, 0.5); /* Blue glow */
+            --subtle-gray: #f1f5f9; /* Slate-100 */
+        }
+        
+        .text-accent { color: var(--primary-blue); } 
+        .bg-accent { background-color: var(--primary-blue); }
+
+        /* Custom Button Style */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px; /* Fully rounded */
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--darker-blue);
+            box-shadow: 0 0 20px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+        
+        /* Style for Outline Buttons (Secondary/Tertiary) */
+        .btn-outline {
+            background-color: white;
+            color: var(--primary-blue); /* Default text color is accent blue */
+            border: 2px solid var(--primary-blue); /* Default border is accent blue */
+        }
+
+        /* Hover state now adds a ring/glow without changing the background or text color */
+        .btn-outline:hover {
+            background-color: var(--subtle-gray); /* Very slight background change for tactile feel */
+            box-shadow: 0 0 0 4px rgba(58, 152, 255, 0.4); /* Blue ring/glow effect */
+            transform: translateY(-2px);
+            border-color: var(--primary-blue); /* Ensure border stays solid */
+        }
+        /* --- END New Style --- */
+
+        /* Subtle Background Grid/Pattern for Hero */
+        #grid-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(20, 1fr);
+            grid-template-rows: repeat(20, 1fr);
+            opacity: 0.2; /* REDUCED OPACITY (was 0.35) for lower intensity */
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0; /* Below content */
+        }
+
+        /* UPDATED: Grid Cell Style for Outline Animation */
+        .grid-cell {
+            background-color: transparent;
+            border: 1px solid transparent; 
+            animation: grid-outline-glow linear infinite; 
+        }
+
+        /* UPDATED: Keyframes to use border and box-shadow for a slightly more visible, subtle outline glow effect */
+        @keyframes grid-outline-glow {
+            0%, 100% { 
+                border-color: transparent;
+                box-shadow: none;
+            }
+            50% { 
+                /* Highlight the border with primary blue, REDUCED opacity */
+                border-color: rgba(58, 152, 255, 0.5); /* REDUCED from 0.7 to 0.5 */
+                /* Reduced box shadow spread/brightness */
+                box-shadow: 0 0 3px rgba(58, 152, 255, 0.4); /* REDUCED from 4px and 0.6 opacity to 3px and 0.4 */
+            }
+        }
+
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            /* The transition-delay is set in the HTML for a staggered effect */
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth ease-out */
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Specific Styling for Text Over Grid */
+        #hero-content {
+            position: relative;
+            z-index: 10; 
+        }
+
+        /* Feature Card Hover Effect */
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(58, 152, 255, 0.2);
+            border-color: var(--primary-blue);
+        }
+        
+        /* Testimonial Card Styling */
+        .testimonial-card {
+            border: 1px solid var(--subtle-gray);
+            transition: all 0.3s ease;
+            position: relative;
+            /* Add quote icon styling */
+        }
+
+        .testimonial-card:before {
+            content: '“';
+            position: absolute;
+            top: 0.5rem;
+            left: 1rem;
+            font-size: 4rem;
+            color: var(--primary-blue);
+            opacity: 0.2;
+            line-height: 1;
+        }
+
+        .testimonial-card:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            border-color: rgba(58, 152, 255, 0.5);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 1. Header and Navigation -->
+    <header class="fixed top-0 left-0 w-full bg-white bg-opacity-95 backdrop-blur-sm shadow-lg z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="text-3xl font-extrabold text-accent">WebValet</div>
+            <div class="hidden md:flex space-x-8 text-gray-600 font-medium">
+                <a href="#features" class="hover:text-accent transition duration-200">Features</a>
+                <a href="#process" class="hover:text-accent transition duration-200">Our Process</a>
+                <a href="#testimonials" class="hover:text-accent transition duration-200">Testimonials</a> <!-- CHANGED LINK -->
+                <a href="#contact" class="hover:text-accent transition duration-200">Contact</a>
+            </div>
+            <a href="#contact" class="btn btn-primary hidden md:flex">
+                Start Your Project
+            </a>
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button class="md:hidden text-gray-600 hover:text-accent focus:outline-none" aria-label="Toggle Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <!-- 2. Hero Section -->
+    <section id="hero" class="relative overflow-hidden min-h-screen flex items-center bg-gray-50 py-24 md:py-32">
+        <div id="grid-container" class="absolute inset-0"></div>
+        <div id="hero-content" class="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl">
+            <p class="text-lg font-semibold text-accent mb-4 animate-on-scroll" style="transition-delay: 0.0s;">Your Digital Future, Built Today</p>
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 text-gray-900 animate-on-scroll" style="transition-delay: 0.1s;">
+                Custom Websites <br class="hidden sm:inline" /> that Drive <span class="text-accent">Real Growth</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-10 animate-on-scroll" style="transition-delay: 0.2s;">
+                We partner with small businesses to design, develop, and optimize high-performance websites that convert visitors into loyal customers.
+            </p>
+            <!-- UPDATED BUTTON GROUP FOR DIRECT CONTACT -->
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 animate-on-scroll" style="transition-delay: 0.3s;">
+                <!-- 1. Primary Action: Call Us Now (Most direct contact) -->
+                <a href="tel:7705202712" class="btn btn-primary text-lg w-full sm:w-auto"> <!-- UPDATED PHONE NUMBER -->
+                    Call Us Now
+                </a>
+                
+                <!-- 2. Secondary Action: Email Us (Direct contact) -->
+                <a href="mailto:webvalet726@gmail.com" class="btn btn-outline text-lg w-full sm:w-auto"> <!-- UPDATED EMAIL ADDRESS -->
+                    Email Us
+                </a>
+
+                <!-- 3. Tertiary Action: See Features (Informational) -->
+                <a href="#features" class="btn btn-outline text-lg text-gray-700 border-gray-300 hover:border-accent w-full sm:w-auto">
+                    See Features
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Features Section -->
+    <section id="features" class="py-24 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-4xl font-extrabold text-gray-900 animate-on-scroll">The WebValet Advantage</h2>
+                <p class="mt-4 text-xl text-gray-600 animate-on-scroll" style="transition-delay: 0.1s;">
+                    We focus on the three pillars of online success: speed, design, and searchability.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1: Performance -->
+                <div class="feature-card p-8 bg-white border border-gray-200 rounded-xl shadow-lg animate-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="text-accent mb-4">
+                        <!-- Icon for Speed/Performance (Bolt) -->
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-900">Blazing Fast Performance</h3>
+                    <p class="text-gray-600">Our sites score high on Lighthouse, ensuring fast loading times, which dramatically reduces bounce rates and improves user experience.</p>
+                </div>
+                
+                <!-- Feature 2: Design -->
+                <div class="feature-card p-8 bg-white border border-gray-200 rounded-xl shadow-lg animate-on-scroll" style="transition-delay: 0.3s;">
+                    <div class="text-accent mb-4">
+                        <!-- Icon for Design/Aesthetics (Palette) -->
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h14a2 2 0 012 2v16h-4m-4-1h-4m2-15v15"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-900">Conversion-Focused Design</h3>
+                    <p class="text-gray-600">Beautiful, modern, and intuitive designs that are fully responsive and built with the clear goal of driving action and sales.</p>
+                </div>
+
+                <!-- Feature 3: SEO -->
+                <div class="feature-card p-8 bg-white border border-gray-200 rounded-xl shadow-lg animate-on-scroll" style="transition-delay: 0.4s;">
+                    <div class="text-accent mb-4">
+                        <!-- Icon for SEO/Searchability (Magnifying Glass) -->
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3 text-gray-900">Built for Search Engines</h3>
+                    <p class="text-gray-600">Every site is technically optimized from the ground up to rank higher, including structured data, clean code, and fast hosting recommendations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Process Section (4 Steps) -->
+    <section id="process" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-sm font-medium uppercase tracking-wider text-accent animate-on-scroll">Our Simple Roadmap</span>
+                <h2 class="text-4xl font-extrabold text-gray-900 mt-2 animate-on-scroll" style="transition-delay: 0.1s;">The 4 Steps to Your New Website</h2>
+            </div>
+
+            <ol class="space-y-16 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-12">
+                <!-- Step 1 -->
+                <li class="relative animate-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-full bg-accent text-white font-bold text-xl mb-4 mx-auto lg:mx-0">1</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2 ">Discovery & Strategy</h3>
+                    <p class="text-gray-600 ">We define your goals, target audience, and competitive landscape to build a solid foundation.</p>
+                </li>
+                <!-- Step 2 -->
+                <li class="relative animate-on-scroll" style="transition-delay: 0.3s;">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-full bg-accent text-white font-bold text-xl mb-4 mx-auto lg:mx-0">2</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2 ">Design & Prototyping</h3>
+                    <p class="text-gray-600 ">We create wireframes and mockups for your approval, ensuring the visual direction is perfect before code is written.</p>
+                </li>
+                <!-- Step 3 -->
+                <li class="relative animate-on-scroll" style="transition-delay: 0.4s;">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-full bg-accent text-white font-bold text-xl mb-4 mx-auto lg:mx-0">3</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2 ">Development & Testing</h3>
+                    <p class="text-gray-600 ">We build your site with clean, modern code, rigorously testing it for responsiveness and speed across all devices.</p>
+                </li>
+                <!-- Step 4 -->
+                <li class="relative animate-on-scroll" style="transition-delay: 0.5s;">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-full bg-accent text-white font-bold text-xl mb-4 mx-auto lg:mx-0">4</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2 ">Launch & Support</h3>
+                    <p class="text-gray-600 ">Your site goes live! We provide post-launch support and training to ensure you can manage and grow your new digital asset.</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- 5. Testimonials Section (Replaces Pricing) -->
+    <section id="testimonials" class="py-24 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-sm font-medium uppercase tracking-wider text-accent animate-on-scroll">Trusted By Clients</span>
+                <h2 class="text-4xl font-extrabold text-gray-900 mt-2 animate-on-scroll" style="transition-delay: 0.1s;">What Our Partners Say</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card p-6 bg-gray-50 rounded-xl shadow-md animate-on-scroll" style="transition-delay: 0.2s;">
+                    <p class="text-lg text-gray-700 italic mb-6 relative pl-4 pt-10">
+                        "WebValet delivered a beautiful website that is significantly faster than our old one. We saw a 30% jump in contact form submissions within the first month. They are true professionals."
+                    </p>
+                    <div class="flex items-center mt-4">
+                        <!-- Placeholder Image -->
+                        <img src="https://placehold.co/40x40/3A98FF/ffffff?text=C1" alt="Valued Customer" class="rounded-full mr-3 border-2 border-accent">
+                        <div>
+                            <p class="font-semibold text-gray-900">Valued Customer</p>
+                            <p class="text-sm text-gray-500">Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card p-6 bg-gray-50 rounded-xl shadow-md animate-on-scroll" style="transition-delay: 0.3s;">
+                    <p class="text-lg text-gray-700 italic mb-6 relative pl-4 pt-10">
+                        "The design team was incredible. They took our vague ideas and turned them into a clean, modern, and highly effective digital storefront. Highly recommended for any small business."
+                    </p>
+                    <div class="flex items-center mt-4">
+                         <!-- Placeholder Image -->
+                        <img src="https://placehold.co/40x40/3A98FF/ffffff?text=C2" alt="Valued Customer" class="rounded-full mr-3 border-2 border-accent">
+                        <div>
+                            <p class="font-semibold text-gray-900">Valued Customer</p>
+                            <p class="text-sm text-gray-500">CEO, Small Company</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card p-6 bg-gray-50 rounded-xl shadow-md animate-on-scroll" style="transition-delay: 0.4s;">
+                    <p class="text-lg text-gray-700 italic mb-6 relative pl-4 pt-10">
+                        "We needed a complex appointment booking system built quickly. WebValet integrated the solution seamlessly and gave us full training. A fantastic, reliable partner."
+                    </p>
+                    <div class="flex items-center mt-4">
+                         <!-- Placeholder Image -->
+                        <img src="https://placehold.co/40x40/3A98FF/ffffff?text=C3" alt="Valued Customer" class="rounded-full mr-3 border-2 border-accent">
+                        <div>
+                            <p class="font-semibold text-gray-900">Valued Customer</p>
+                            <p class="text-sm text-gray-500">Startup Founder</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Contact Section (Now Section 6) -->
+    <section id="contact" class="py-24 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto">
+                <h2 class="text-4xl font-extrabold text-gray-900 mb-4 animate-on-scroll">Ready to Start Your Project?</h2>
+                <p class="text-xl text-gray-600 mb-10 animate-on-scroll" style="transition-delay: 0.1s;">
+                    Let's connect. Fill out the form below or email us directly to schedule a free consultation.
+                </p>
+            </div>
+
+            <!-- UPDATED FORM ACTION FOR MAILTO -->
+            <form action="mailto:webvalet726@gmail.com" method="post" enctype="text/plain" class="max-w-lg mx-auto space-y-6 animate-on-scroll" style="transition-delay: 0.2s;">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                    <input type="text" id="name" name="name" required class="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-accent focus:border-accent">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                    <input type="email" id="email" name="email" required class="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-accent focus:border-accent">
+                </div>
+                <div>
+                    <label for="project-details" class="block text-sm font-medium text-gray-700">Project Details / Message</label>
+                    <textarea id="project-details" name="project-details" rows="4" required class="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-accent focus:border-accent"></textarea>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary w-full text-lg">
+                        Submit Request
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- 7. Footer -->
+    <!-- FOOTER BACKGROUND IS WHITE AND TEXT COLORS ARE DARK GRAY -->
+    <footer class="bg-white py-12 border-t border-gray-200">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 border-b border-gray-200 pb-8 mb-8">
+                <div class="col-span-2 md:col-span-2">
+                    <h4 class="text-2xl font-extrabold mb-4 text-accent">WebValet</h4>
+                    <p class="text-gray-600 max-w-sm"> 
+                        Building high-performance, growth-focused websites for small businesses and ambitious entrepreneurs.
+                    </p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h5 class="font-semibold text-lg mb-4 text-gray-900">Quick Links</h5> 
+                    <ul class="space-y-3">
+                        <li><a href="#features" class="text-gray-600 hover:text-accent transition duration-200">Features</a></li> 
+                        <li><a href="#process" class="text-gray-600 hover:text-accent transition duration-200">Our Process</a></li> 
+                        <li><a href="#testimonials" class="text-gray-600 hover:text-accent transition duration-200">Testimonials</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div>
+                    <h5 class="font-semibold text-lg mb-4 text-gray-900">Resources</h5> 
+                    <ul class="space-y-3">
+                        <!-- LINK IS CORRECTLY POINTING TO combinedlegaldocs.html -->
+                        <li><a href="combinedlegaldocs.html" class="text-gray-600 hover:text-accent transition duration-200">Legal Documents</a></li> 
+                        <li><a href="#contact" class="text-gray-600 hover:text-accent transition duration-200">Support</a></li> 
+                    </ul>
+                </div>
+
+                <!-- Contact Info (Placeholder) -->
+                <div>
+                    <h5 class="font-semibold text-lg mb-4 text-gray-900">Get in Touch</h5> 
+                    <ul class="space-y-3 text-gray-600"> 
+                        <li>770-520-2712</li> <!-- UPDATED PHONE NUMBER -->
+                        <li>webvalet726@gmail.com</li> <!-- UPDATED EMAIL ADDRESS -->
+                        <li>San Francisco, CA</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-center md:flex md:justify-between md:items-center text-gray-600 text-sm"> 
+                <p>&copy; 2025 WebValet. All rights reserved.</p>
+                <div class="mt-2 md:mt-0 space-x-4">
+                    <span class="text-gray-600">Built with <span class="text-red-500">&hearts;</span></span> 
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 1. On Load Actions
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- FIX: Immediately animate Hero elements (since they are visible on load) ---
+            const heroElements = document.querySelectorAll('#hero-content .animate-on-scroll');
+            heroElements.forEach(el => {
+                // By immediately adding the 'is-visible' class, the CSS transition
+                // will fire, using the inline 'transition-delay' for a staggered effect.
+                el.classList.add('is-visible');
+            });
+            // -----------------------------------------------------------------------------
+
+
+            // 2. Smooth Scroll/Scroll-based animation logic for sections BELOW the fold
+            const elementsToScrollAnimate = document.querySelectorAll('.animate-on-scroll');
+
+            if ('IntersectionObserver' in window) {
+                const observerOptions = {
+                    // Start observing 100px before the element enters the viewport
+                    rootMargin: '0px 0px -100px 0px', 
+                    threshold: 0.1 // Trigger when 10% of the element is visible
+                };
+
+                // 3. Create the observer
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        // Check if it's visible AND ensure it's not a Hero element 
+                        if (entry.isIntersecting && !entry.target.closest('#hero-content')) {
+                            entry.target.classList.add('is-visible');
+                            // Stop observing once it's visible to prevent re-triggering
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                // 4. Start observing each element that is NOT in the Hero section
+                elementsToScrollAnimate.forEach(element => {
+                    if (!element.closest('#hero-content')) {
+                        observer.observe(element);
+                    }
+                });
+            } else {
+                // Fallback for browsers that don't support Intersection Observer: show content immediately
+                elementsToScrollAnimate.forEach(element => {
+                    element.classList.add('is-visible');
+                });
+            }
+
+
+            // 5. Illuminating Grid Generation (Now much more subtle)
+            const gridContainer = document.getElementById('grid-container');
+            if (gridContainer) { // Ensure the element exists
+                const gridSize = 20;
+                const totalCells = gridSize * gridSize;
+
+                for (let i = 0; i < totalCells; i++) {
+                    const cell = document.createElement('div');
+                    cell.classList.add('grid-cell');
+                    
+                    // Slower Animation: Randomize animation delay (0 to 45s)
+                    const randomDelay = Math.random() * 45;
+                    
+                    // Slower Animation: Randomize animation duration (30s to 60s) for a gentle pulse
+                    const randomDuration = 30 + Math.random() * 30; 
+                    
+                    cell.style.animationDelay = `${randomDelay}s`;
+                    cell.style.animationDuration = `${randomDuration}s`;
+                    
+                    gridContainer.appendChild(cell);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
