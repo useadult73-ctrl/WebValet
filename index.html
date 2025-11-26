@@ -90,7 +90,7 @@
             display: grid;
             grid-template-columns: repeat(20, 1fr);
             grid-template-rows: repeat(20, 1fr);
-            opacity: 0.2; /* REDUCED OPACITY (was 0.35) for lower intensity */
+            opacity: 0.35; /* INCREASED OPACITY (was 0.2) for higher intensity */
             overflow: hidden;
             pointer-events: none;
             z-index: 0; /* Below content */
@@ -103,17 +103,17 @@
             animation: grid-outline-glow linear infinite; 
         }
 
-        /* UPDATED: Keyframes to use border and box-shadow for a slightly more visible, subtle outline glow effect */
+        /* UPDATED: Keyframes to use border and box-shadow for a brighter glow effect */
         @keyframes grid-outline-glow {
             0%, 100% { 
                 border-color: transparent;
                 box-shadow: none;
             }
             50% { 
-                /* Highlight the border with primary blue, REDUCED opacity */
-                border-color: rgba(58, 152, 255, 0.5); /* REDUCED from 0.7 to 0.5 */
-                /* Reduced box shadow spread/brightness */
-                box-shadow: 0 0 3px rgba(58, 152, 255, 0.4); /* REDUCED from 4px and 0.6 opacity to 3px and 0.4 */
+                /* Highlight the border with primary blue, INCREASED opacity */
+                border-color: rgba(58, 152, 255, 0.7); /* INCREASED from 0.5 to 0.7 */
+                /* Increased box shadow spread/brightness */
+                box-shadow: 0 0 4px rgba(58, 152, 255, 0.6); /* INCREASED from 3px/0.4 to 4px/0.6 */
             }
         }
 
@@ -436,7 +436,7 @@
                     <ul class="space-y-3 text-gray-600"> 
                         <li>770-520-2712</li> <!-- UPDATED PHONE NUMBER -->
                         <li>webvalet726@gmail.com</li> <!-- UPDATED EMAIL ADDRESS -->
-                        <li>San Francisco, CA</li>
+                        <li>John's Creek, GA</li> <!-- LOCATION CHANGED TO JOHN'S CREEK, GA -->
                     </ul>
                 </div>
             </div>
@@ -510,11 +510,11 @@
                     const cell = document.createElement('div');
                     cell.classList.add('grid-cell');
                     
-                    // Slower Animation: Randomize animation delay (0 to 45s)
-                    const randomDelay = Math.random() * 45;
+                    // FASTER ANIMATION: Randomize animation delay (0 to 15s)
+                    const randomDelay = Math.random() * 15; /* FASTER */
                     
-                    // Slower Animation: Randomize animation duration (30s to 60s) for a gentle pulse
-                    const randomDuration = 30 + Math.random() * 30; 
+                    // FASTER ANIMATION: Randomize animation duration (10s to 25s) 
+                    const randomDuration = 10 + Math.random() * 15; /* FASTER */
                     
                     cell.style.animationDelay = `${randomDelay}s`;
                     cell.style.animationDuration = `${randomDuration}s`;
