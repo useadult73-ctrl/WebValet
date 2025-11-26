@@ -646,11 +646,11 @@
                 </ul>
             </div>
             
-            <!-- Legal - UPDATED TO A SINGLE, COMBINED LINK -->
+            <!-- Legal - CORRECTED LINK HERE -->
             <div>
                 <h5 class="text-lg font-semibold text-slate-900 mb-4">Legal</h5>
                 <ul class="space-y-2 text-sm">
-                    <!-- This single link now points to the new combined file -->
+                    <!-- FIX: Ensure the link points to the external file name -->
                     <li><a href="legal_documents.html" class="hover:text-accent transition duration-150">Privacy Policy and Terms of Service</a></li>
                 </ul>
             </div>
@@ -683,11 +683,13 @@
             // 2. Smooth Scrolling and Mobile Menu Close on Link Click
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
-                    if (this.getAttribute('href').startsWith('#')) {
+                    // Check if the link is an internal anchor link (starts with #)
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#')) {
                         // Prevents the default hard jump. The scroll-behavior: smooth CSS handles the animation.
                         e.preventDefault();
                         
-                        const targetId = this.getAttribute('href');
+                        const targetId = href;
                         const targetElement = document.querySelector(targetId);
 
                         if (targetElement) {
