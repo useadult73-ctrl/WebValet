@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebValet - Privacy and Terms</title>
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base styles consistent with index.html */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Slate-50 */
+            color: #1e293b; 
+            padding-top: 5.5rem; /* Space for the fixed header */
+        }
+        :root {
+            --primary-blue: #3A98FF;
+        }
+        .text-accent { color: var(--primary-blue); } 
+        
+        /* Ensures the fixed header is cleared properly */
+        #legal-content {
+            scroll-margin-top: 5.5rem; 
+        }
+        
+        /* Custom styling for the header on this page */
+        .fixed-header {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling for the back button */
+        .btn-back {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            transition: all 0.3s ease;
+        }
+        .btn-back:hover {
+            background-color: var(--primary-blue);
+            color: white;
+            box-shadow: 0 4px 15px rgba(58, 152, 255, 0.3);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- HEADER: Fixed top-of-page navigation bar (Simplified WebValet Style) -->
+    <header class="fixed-header bg-white fixed top-0 left-0 right-0 z-50 border-b-2 border-slate-200 h-20 flex items-center">
+        <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <!-- LOGO -->
+            <a href="index.html#hero" class="text-2xl font-extrabold text-slate-900 flex items-center">
+                <span>WEB<span class="text-accent">VALET</span></span>
+            </a>
+            
+            <!-- Quick Navigation for the document sections and Back to Home button -->
+            <nav class="flex items-center space-x-4 text-slate-700 font-medium">
+                
+                <!-- NEW: Back to Home Button -->
+                <a href="index.html" class="btn-back px-4 py-2 text-sm rounded-xl hidden sm:inline-flex items-center">
+                    <!-- SVG for Arrow Icon (lucide-react equivalent: arrow-left) -->
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    Back to Home
+                </a>
+
+                <a href="index.html#contact" class="text-slate-700 hover:text-accent transition duration-150 hidden md:inline">Contact Us</a>
+                <a href="#privacy" class="text-slate-700 hover:text-accent transition duration-150">Privacy</a>
+                <a href="#terms" class="text-slate-700 hover:text-accent transition duration-150">Terms</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content for Combined Legal Documents -->
+    <main id="legal-content" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h1 class="text-5xl font-extrabold text-slate-900 mb-4 border-b-4 border-accent pb-2">Privacy Policy and Terms of Service</h1>
+        <p class="text-md text-slate-500 mb-12">Effective Date: November 25, 2025</p>
+
+        <!-- 1. PRIVACY POLICY SECTION -->
+        <section id="privacy" class="bg-white p-8 rounded-2xl shadow-lg mb-16 border-l-4 border-accent">
+            <h2 class="text-3xl font-bold text-accent mb-6">1. Privacy Policy</h2>
+            <p class="mb-6 text-slate-700">Your privacy is important to us, and we are committed to protecting it. This section explains what information we collect and how we use it to provide our services.</p>
+
+            <h3 class="text-2xl font-semibold mt-6 mb-3">1.1. Information We Collect</h3>
+            <ul class="list-disc list-inside ml-6 space-y-2 text-slate-600">
+                <li>**Contact Form Data:** When you use our "Get a Quote" form, we collect your name, email address, phone number, business name, project details, and budget. This information is necessary to provide you with a consultation and proposal.</li>
+                <li>**Usage Data:** We collect non-personal data (like which pages you visit and for how long) to help us improve our website and client experience.</li>
+            </ul>
+
+            <h3 class="text-2xl font-semibold mt-6 mb-3">1.2. How We Use Information</h3>
+            <p class="text-slate-700">We use the collected information solely for these purposes:</p>
+            <ul class="list-disc list-inside ml-6 space-y-2 text-slate-600">
+                <li>To respond to your consultation requests and send you project quotes.</li>
+                <li>To communicate with you about your active project.</li>
+                <li>To monitor and analyze the performance of our website.</li>
+            </ul>
+        </section>
+
+        <!-- 2. TERMS OF SERVICE SECTION -->
+        <section id="terms" class="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-accent">
+            <h2 class="text-3xl font-bold text-accent mb-6">2. Terms of Service</h2>
+            <p class="mb-6 text-slate-700">These terms govern your use of the WebValet website and the relationship between you and WebValet regarding any services we provide.</p>
+
+            <h3 class="text-2xl font-semibold mt-6 mb-3">2.1. Acceptance of Terms</h3>
+            <p class="text-slate-700">By accessing and using this website, you agree to be bound by these Terms of Service. If you do not agree to all of the terms and conditions, you should not use this site.</p>
+
+            <h3 class="text-2xl font-semibold mt-6 mb-3">2.2. Service Scope</h3>
+            <ul class="list-disc list-inside ml-6 space-y-2 text-slate-600">
+                <li>We provide custom web design, development, and digital strategy consulting services as outlined in a separate, written project agreement or contract.</li>
+                <li>The content on this website (text, graphics, logos) is the property of WebValet and protected by copyright law.</li>
+            </ul>
+
+            <h3 class="text-2xl font-semibold mt-6 mb-3">2.3. Limitation of Liability</h3>
+            <p class="text-slate-700">WebValet will not be liable for any direct, indirect, incidental, or consequential damages resulting from the use or inability to use the services or for the cost of procurement of substitute services.</p>
+        </section>
+        
+        <!-- Bottom Back to Home Link -->
+        <div class="mt-12 text-center">
+            <a href="index.html" class="btn-back inline-flex items-center px-6 py-3 text-lg rounded-xl font-semibold">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Return to WebValet Homepage
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer (Consistent WebValet Style) -->
+    <footer class="bg-slate-50 text-slate-600 py-6 border-t border-slate-200 mt-12">
+        <div class="container mx-auto px-4 text-center text-sm">
+            <p>&copy; 2025 WebValet. All rights reserved.</p>
+            <p class="mt-2 space-x-4">
+                <a href="index.html" class="hover:text-accent transition duration-150 font-bold">Home</a>
+                <a href="#privacy" class="hover:text-accent transition duration-150">Privacy</a>
+                <a href="#terms" class="hover:text-accent transition duration-150">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebValet - Privacy and Terms</title>
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base styles consistent with index.html */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Slate-50 */
+            color: #1e293b; 
+            padding-top: 5.5rem; /* Space for the fixed header */
+        }
+        :root {
+            --primary-blue: #3A98FF;
+        }
+        .text-accent { color: var(--primary-blue); } 
+        
+        /* Ensures the fixed header is cleared properly */
+        #legal-content {
+            scroll-margin-top: 5.5rem; 
+        }
+        
+        /* Custom styling for the header on this page */
+        .fixed-header {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling for the back button */
+        .btn-back {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            transition: all 0.3s ease;
+        }
+        .btn-back:hover {
+            background-color: var(--primary-blue);
+            color: white;
+            box-shadow: 0 4px 15px rgba(58, 152, 255, 0.3);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- HEADER: Fixed top-of-page navigation bar (Simplified WebValet Style) -->
+    <header class="fixed-header bg-white fixed top-0 left-0 right-0 z-50 border-b-2 border-slate-200 h-20 flex items-center">
+        <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <!-- LOGO -->
+            <a href="index.html#hero" class="text-2xl font-extrabold text-slate-900 flex items-center">
+                <span>WEB<span class="text-accent">VALET</span></span>
+            </a>
+            
+            <!-- Quick Navigation for the document sections and Back to Home button -->
+            <nav class="flex items-center space-x-4 text-slate-700 font-medium">
+                
+                <!-- NEW: Back to Home Button -->
+                <a href="index.html" class="btn-back px-4 py-2 text-sm rounded-xl hidden sm:inline-flex items-center">
+                    <!-- SVG for Arrow Icon (lucide-react equivalent: arrow-left) -->
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    Back to Home
+                </a>
+
+                <a href="index.html#contact" class="text-slate-700 hover:text-accent transition duration-150 hidden md:inline">Contact Us</a>
+                <a href="#privacy" class="text-slate-700 hover:text-accent transition duration-150">Privacy</a>
+                <a href="#terms" class="text-slate-700 hover:text-accent transition duration-150">Terms</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content for Combined Legal Documents -->
+    <main id="legal-content" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h1 class="text-5xl font-extrabold text-slate-900 mb-4 border-b-4 border-accent pb-2">Privacy Policy and Terms of Service</h1>
+        <p class="text-md text-slate-500 mb-12">Effective Date: November 25, 2025</p>
+
+        <!-- 1. PRIVACY POLICY SECTION -->
+        <section id="privacy" class="bg-white p-8 rounded-2xl shadow-lg mb-16 border-l-4 border-accent">
+            <h2 class="text-3xl font-bold text-accent mb-6">1. Privacy Policy</h2>
+            <p class="mb-6 text-slate-700">Your privacy is important to us, and we are committed to protecting it. This section explains what information we collect and how we use it to provide our services.</p>
+
+            <h3 class="text-2xl font-semibold mt-6 mb-3">1.1. Information We Collect</h3>
+            <ul class="list-disc list-inside ml-6 space-y-2 text-slate-600">
+                <li>**Contact Form Data:** When you use our "Get a Quote" form, we collect your name, email address, phone number, business name, project details, and budget. This information is necessary to provide you with a consultation and proposal.</li>
+                <li>**Usage Data:** We collect non-personal data (like which pages you visit and for how long) to help us improve our website and client experience.</li>
+            </ul>
+
+            <h3 class="text-2xl font-semibold mt-6 mb-3">1.2. How We Use Information</h3>
+            <p class="text-slate-700">We use the collected information solely for these purposes:</p>
+            <ul class="list-disc list-inside ml-6 space-y-2 text-slate-600">
+                <li>To respond to your consultation requests and send you project quotes.</li>
+                <li>To communicate with you about your active project.</li>
+                <li>To monitor and analyze the performance of our website.</li>
+            </ul>
+        </section>
+
+        <!-- 2. TERMS OF SERVICE SECTION -->
+        <section id="terms" class="bg-white p-8 rounded-2xl shadow-lg border-l-4 border-accent">
+            <h2 class="text-3xl font-bold text-accent mb-6">2. Terms of Service</h2>
+            <p class="mb-6 text-slate-700">These terms govern your use of the WebValet website and the relationship between you and WebValet regarding any services we provide.</p>
+
+            <h3 class="text-2xl font-semibold mt-6 mb-3">2.1. Acceptance of Terms</h3>
+            <p class="text-slate-700">By accessing and using this website, you agree to be bound by these Terms of Service. If you do not agree to all of the terms and conditions, you should not use this site.</p>
+
+            <h3 class="text-2xl font-semibold mt-6 mb-3">2.2. Service Scope</h3>
+            <ul class="list-disc list-inside ml-6 space-y-2 text-slate-600">
+                <li>We provide custom web design, development, and digital strategy consulting services as outlined in a separate, written project agreement or contract.</li>
+                <li>The content on this website (text, graphics, logos) is the property of WebValet and protected by copyright law.</li>
+            </ul>
+
+            <h3 class="text-2xl font-semibold mt-6 mb-3">2.3. Limitation of Liability</h3>
+            <p class="text-slate-700">WebValet will not be liable for any direct, indirect, incidental, or consequential damages resulting from the use or inability to use the services or for the cost of procurement of substitute services.</p>
+        </section>
+        
+        <!-- Bottom Back to Home Link -->
+        <div class="mt-12 text-center">
+            <a href="index.html" class="btn-back inline-flex items-center px-6 py-3 text-lg rounded-xl font-semibold">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Return to WebValet Homepage
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer (Consistent WebValet Style) -->
+    <footer class="bg-slate-50 text-slate-600 py-6 border-t border-slate-200 mt-12">
+        <div class="container mx-auto px-4 text-center text-sm">
+            <p>&copy; 2025 WebValet. All rights reserved.</p>
+            <p class="mt-2 space-x-4">
+                <a href="index.html" class="hover:text-accent transition duration-150 font-bold">Home</a>
+                <a href="#privacy" class="hover:text-accent transition duration-150">Privacy</a>
+                <a href="#terms" class="hover:text-accent transition duration-150">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
